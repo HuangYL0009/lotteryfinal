@@ -52,6 +52,7 @@ public class StudentServiceImpl implements StudentService {
         int num = sr.nextInt(size)+1;
         return studentDao.lottery(num);
     }
+    //查找学生
     public List<Map<String,Object>> queryAllStudents(){
         return studentDao.queryAllStudents();
     }
