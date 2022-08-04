@@ -2,11 +2,9 @@ package com.example.LotteryTest.controller;
 
 import com.example.LotteryTest.entity.Student;
 import com.example.LotteryTest.service.StudentService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,11 +31,12 @@ public class StudentController {
     }*/
     @ResponseBody
     @RequestMapping(value = "/")
-    public String lottery(){
+    public String lottery(Model model){
         try {
             Student luckydog = studentService.lottery();
             //return luckydog;
-            return "本次抽奖的幸运儿是:学号为"+luckydog.getSno()+"的"+luckydog.getName()+"的同学！";
+            model.addAttribute("text" , luckydog);
+            return "本次抽奖的幸运儿是:学号为"+luckydog.getSno()+"的"+luckydog.getName()+"同学！";
         }catch (Exception e){
             /*System.err.println("error!");
             e.printStackTrace();

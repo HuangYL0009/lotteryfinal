@@ -25,7 +25,7 @@
         <include refid="Base_Column_List" />
         FROM students.studentdata
     </select>
-    <select id="lottery" parameterType="int" resultType="Student">
+    <select id="lottery" parameterType="int" resultType="com.example.LotteryTest.entity.Student">
         SELECT
         <include refid="Base_Column_List"/>
         FROM studentdata WHERE id=#{id}
